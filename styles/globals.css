@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+/* ------------Create form ------------
+.container_crt {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 30px;
+
+  left: 15%;
+}
+
+.container_crt form {
+  position: relative;
+  margin-top: 2%;
+  min-height: 595px;
+  background-color: rgb(165, 207, 242);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.container_crt form .title {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 2%;
+  color: rgb(134, 129, 129);
+  margin: 3% 5%;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 1%;
+}
+.container_crt form .fields {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  justify-content: space-around;
+}
+
+.input-field_select {
+  color: rgb(23, 17, 17);
+  background-color: #fff;
+  margin: 1%;
+
+  padding: 1%;
+  border: 1px solid #0a023ffb;
+  width: 80%;
+  margin-left: 10%;
+  cursor: pointer;
+}
+
+form .fields .input-field {
+  display: flex;
+  width: calc(100% / 3 - 15px);
+  flex-direction: column;
+  margin: 1% 0;
+  padding: 1%;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #0a023ffb;
+}
+
+.input-field::placeholder {
+  font-size: 12px;
+  font-weight: 500;
+  color: #000;
+}
+
+.Rbtn_crt {
+  margin-top: 1%;
+
+  left: 25%;
+  display: inline-block;
+  color: #000;
+  border: 2px solid #101010;
+  padding: 1% 1%;
+  font-size: 14px;
+
+  width: 55%;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+.Rbtn_crt:hover {
+  background-color: #417586;
+  color: white;
+}
+
+@media (max-width: 750px) {
+  .container_crt form {
+    overflow-y: scroll;
+  }
+  .container_crt form::-webkit-scrollbar {
+    display: none;
+  }
+  form .fields .input-field {
+    width: calc(100% / 2 - 15px);
+  }
+}
+
+@media (max-width: 550px) {
+  form .fields .input-field {
+    width: 80%;
+    margin: 1%;
+    justify-content: center;
+  }
+} */
+
+/* -------------------------id -------------- */
+
+.container_id {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: medium;
+}
+
+
+.org {
+  color: #2a70de;
+  font-size: 25px;
+  font-style: oblique;
+}
+
+.adr {
+  font-size: 22px;
+}
+
+.fil::placeholder {
+  color: #000;
+}
