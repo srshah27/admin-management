@@ -26,9 +26,8 @@ export default NextAuth({
 
         if (dbUser.length < 0) return null; // User not fount
 
-        if (! await compare(credentials.password, dbUser[0].hash)) return null;  // Passwords do not match
-
-        if (userData.length < 0) return null; // User Data not found
+        console.log(dbUser[0].hash);
+        if (!await compare(credentials.password, dbUser[0].hash)) return null;  // Passwords do not match
         let user = {
           ...dbUser[0],
         }

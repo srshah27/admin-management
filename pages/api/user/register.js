@@ -8,20 +8,16 @@ export default async function registerUser(req, res) {
     res.json({ 'message': 'This is a POST API' }).status(404);
   }
 
-  const { email,
+  const {
+    email,
     password,
-    designation,
-    title,
-    f_name,
-    m_name,
-    l_name,
-    mob,
-    qualification } = req.body
+  } = req.body
 
   let count = await executeQuery({
     query: "SELECT COUNT(*) FROM `user`;",
     values: []
   })
+  console.log('this is api', count[0]);
   const user_id = parseInt(count[0]['COUNT(*)']) + 1;
   // check email
   let duplicateEmail = await executeQuery({
@@ -34,10 +30,10 @@ export default async function registerUser(req, res) {
     }); return
   }
   let insertDataUser
-  const hash = await hash(password, 10)
-  insertDataAuth = await executeQuery({
+  const hashed = await hash(password, 10)
+  let insertDataAuth = await executeQuery({
     query: "INSERT INTO `user`(`user_id`, `email`, `hash`, `is_admin`) VALUES (?,?,?,?);",
-    values: [user_id, email, hash, false]
+    values: [user_id, email, hashed, false]
   })
   if (insertDataAuth.error) {
 
