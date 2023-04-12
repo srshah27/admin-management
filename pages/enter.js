@@ -7,10 +7,11 @@ import {
   Input,
   Button
 } from '@chakra-ui/react'
-import InputChakra from '@/components/InputChakra'
 import { Select } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 
 const enter = () => {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -34,6 +35,7 @@ const enter = () => {
       console.log(res2.error)
     } else {
       console.log("Success")
+      router.push('/')
     }
   }
   return (

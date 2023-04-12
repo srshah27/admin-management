@@ -21,19 +21,16 @@ export default function Home({ fetched }) {
   const [data, setdata] = useState(fetched)
 
   const handleDelete = async (id) => {
-    const res = await fetch(`/api/db/`, {
+    console.log(id);
+    const res = await fetch(`/api/db/?id=${id}`, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id })
     })
-    const { data } = await res.json()
-    if (data?.error) {
-      alert(data.error)
+    const { fetched } = await res.json()
+    if (fetched?.error) {
+      alert(fetched.error)
       return
     }
-    let newData = data?.filter(item => item.id !== id)
+    let newData = data.filter(item => item.id !== id)
     setdata(newData)
   }
 

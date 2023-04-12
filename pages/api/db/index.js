@@ -6,10 +6,10 @@ import { getSession } from 'next-auth/react';
 export default async function CRUD(req, res) {
 
   const reqtype = req.method;
+  let { id } = req.query
 
   switch (reqtype) {
     case 'GET':
-      let { id } = req.query
       if (!id) {
         console.log('no query');
         let fetched = await executeQuery({
@@ -48,15 +48,17 @@ export default async function CRUD(req, res) {
       return res.status(200).json({ error: 'Database Error' })
 
     case 'DELETE':
-      const { id: eid } = req.body;
-      console.log(eid);
-      let deleteValue = await executeQuery({
-        query: "delete from data where id=?;",
-        values: [eid]
-      })
-      if (deleteValue)
-        return res.status(200).json({ message: 'Deleted' })
-      return res.status(200).json({ error: 'Database Error' })
+      console.log('this i body', id);
+      if (id) {
+        let deleteValue = await executeQuery({
+          query: "delete from data where id=?;",
+          values: [id]
+        })
+        if (deleteValue)
+          return res.status(200).json({ message: 'Deleted' })
+        return res.status(200).json({ error: 'Database Error' })
+      }
+      return res.status(200).json({ error: 'No id provided' })
 
     default:
       return res.status(405).json({ message: 'Method not allowed' });
