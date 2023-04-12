@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   FormControl,
   FormLabel,
@@ -10,17 +10,22 @@ import {
 import InputChakra from '@/components/InputChakra'
 import { Select } from '@chakra-ui/react'
 
-const test = () => {
-
-  const AddData = async (data_id) => {
-    const res = await fetch(`/api/db/add`, {
+const enter = () => {
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    mobile_number: '',
+    employment_status: ''
+  })
+  const AddData = async () => {
+    const res = await fetch(`/api/db`, {
 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        data_id
+        ...formData
       })
     })
 
@@ -37,18 +42,18 @@ const test = () => {
         <FormControl isRequired className='mt-12'>
           <div className='mt-12'>
             <FormLabel>First Name</FormLabel>
-            <Input placeholder='First Name' />
+            <Input placeholder='First Name' value={formData.first_name} onChange={(e) => setFormData({ ...formData, first_name: e.target.value })} />
           </div>
           <div className='mt-12'>
             <FormLabel>Last Name</FormLabel>
-            <Input placeholder='Last Name' />
+            <Input placeholder='Last Name' value={formData.last_name} onChange={(e) => setFormData({ ...formData, last_name: e.target.value })} />
           </div>
           <div className='mt-12'>
             <FormLabel>Mobile Number</FormLabel>
-            <Input placeholder='Mobile Number' />
+            <Input placeholder='Mobile Number' value={formData.mobile_number} onChange={(e) => setFormData({ ...formData, mobile_number: e.target.value })} />
           </div>
           <FormLabel className='mt-12'>Employment Status</FormLabel>
-          <Select placeholder='Select Employment Status'>
+          <Select placeholder='Select Employment Status' value={formData.employment_status} onChange={(e) => setFormData({ ...formData, employment_status: e.target.value })}>
             <option>Employed</option>
             <option>Unemployed</option>
           </Select>
@@ -56,6 +61,7 @@ const test = () => {
             mt={12}
             colorScheme='teal'
             type='submit'
+            onClick={() => AddData()}
           >
             Submit
           </Button>
@@ -66,4 +72,4 @@ const test = () => {
   )
 }
 
-export default test
+export default enter
