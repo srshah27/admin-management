@@ -35,18 +35,20 @@ export default function Home({ fetched }) {
   }
 
   return (
-    <div className='flex flex-col items-center bg-[url(/bg.webp)] h-screen'>
+    <div className='flex flex-col items-center bg-[url(/bg.webp)]'>
       <Heading>Employee Details</Heading>
       <TableContainer className='m-8 p-4 border-solid border-2 border-black'>
         <Table variant='simple'>
           <Thead>
             <Tr>
-              <Th>First Name</Th>
-              <Th>Last Name</Th>
-              <Th>Mobile Number</Th>
-              <Th>isEmployed</Th>
-              <Th>Update</Th>
-              <Th>Delete</Th>
+              <Th>ROLL</Th>
+              <Th>FULLNAME</Th>
+              <Th>MOBILE</Th>
+              <Th>BATCH MONTH</Th>
+              <Th>BATCH NO</Th>
+              <Th>BATCH TIME</Th>
+              <Th>UPDATE</Th>
+              <Th>DELETE</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -54,10 +56,12 @@ export default function Home({ fetched }) {
               data.map((item, index) => {
                 return (
                   <Tr key={index}>
-                    <Td>{item.firstname}</Td>
-                    <Td>{item.lastname}</Td>
+                    <Td>{item.roll}</Td>
+                    <Td>{item.fullname}</Td>
                     <Td isNumeric>{item.mobile}</Td>
-                    <Td>{item.employment}</Td>
+                    <Td>{item.batch_month}</Td>
+                      <Td>{item.batch_no}</Td>
+                    <Td>{item.batch_time}</Td>
                     <Td><Link href={`/update/${item.id}`}>Update</Link></Td>
                     <Td><button onClick={() => handleDelete(item.id)}>Delete</button></Td>
                   </Tr>

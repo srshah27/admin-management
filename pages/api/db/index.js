@@ -13,13 +13,13 @@ export default async function CRUD(req, res) {
       if (!id) {
         console.log('no query');
         let fetched = await executeQuery({
-          query: "SELECT * FROM data",
+          query: "SELECT * FROM employee",
           values: []
         })
         return res.status(200).json({ data: fetched })
       }
       let fetched = await executeQuery({
-        query: "SELECT * FROM data WHERE id=?",
+        query: "SELECT * FROM employee WHERE id=?",
         values: [id]
       })
       return res.status(200).json({ data: fetched })
@@ -27,8 +27,8 @@ export default async function CRUD(req, res) {
       const body = req.body;
       console.log(body);
       let insertvalues = await executeQuery({
-        query: "insert into data (firstname, lastname, mobile, employment )values(?,?,?,?)",
-        values: [body.first_name, body.last_name, body.mobile_number, body.employment_status]
+        query: "insert into employee (roll, fullname, mobile, batch_month, batch_no, batch_time)values(?,?,?,?,?,?)",
+        values: [body.roll_number, body.full_name, body.mobile_number, body.batch_month, body.batch_no, body.batch_time]
       })
       console.log(insertvalues);
       if (insertvalues)
@@ -39,8 +39,8 @@ export default async function CRUD(req, res) {
       const patchBody = req.body;
       console.log(patchBody);
       let updateValue = await executeQuery({
-        query: "update data set firstname = ?, lastname = ?, mobile = ?, employment = ? where id=?;",
-        values: [patchBody.first_name, patchBody.last_name, patchBody.mobile_number, patchBody.employment_status, patchBody.id]
+        query: "update employee set roll = ?, fullname = ?, mobile = ?, batch_month = ?, batch_no = ?, batch_time=? where id=?;",
+        values: [patchBody.roll_number, patchBody.full_name, patchBody.mobile_number, patchBody.batch_month, patchBody.batch_no, patchBody.batch_time, patchBody.id]
       })
       console.log(updateValue);
       if (updateValue)
@@ -51,7 +51,7 @@ export default async function CRUD(req, res) {
       console.log('this i body', id);
       if (id) {
         let deleteValue = await executeQuery({
-          query: "delete from data where id=?;",
+          query: "delete from employee where id=?;",
           values: [id]
         })
         if (deleteValue)

@@ -16,10 +16,12 @@ const enter = ({ data }) => {
 
   const [formData, setFormData] = useState({
     id: data.id,
-    first_name: data.firstname,
-    last_name: data.lastname,
+    roll_number: data.roll,
+    full_name: data.fullname,
     mobile_number: data.mobile,
-    employment_status: data.employment
+    batch_month: data.batch_month,
+    batch_no: data.batch_no,
+    batch_time: data.batch_time,
   })
   const AddData = async () => {
     const res = await fetch(`/api/db`, {
@@ -43,24 +45,36 @@ const enter = ({ data }) => {
   return (
     <div className='flex flex-col justify-center items-center p-8 mt-4'>
       <div className='w-[80%]'>
-        <FormControl isRequired className='mt-12'>
+      <FormControl isRequired className='mt-12'>
           <div className='mt-12'>
-            <FormLabel>First Name</FormLabel>
-            <Input placeholder='First Name' value={formData.first_name} onChange={(e) => setFormData({ ...formData, first_name: e.target.value })} />
+            <FormLabel>ROLL NUMBER</FormLabel>
+            <Input placeholder='ROLL NUMBER' value={formData.roll_number} onChange={(e) => setFormData({ ...formData, roll_number: e.target.value })} />
           </div>
           <div className='mt-12'>
-            <FormLabel>Last Name</FormLabel>
-            <Input placeholder='Last Name' value={formData.last_name} onChange={(e) => setFormData({ ...formData, last_name: e.target.value })} />
+            <FormLabel>FULL NAME</FormLabel>
+            <Input placeholder='FULL NAME' value={formData.full_name} onChange={(e) => setFormData({ ...formData, full_name: e.target.value })} />
           </div>
           <div className='mt-12'>
-            <FormLabel>Mobile Number</FormLabel>
+            <FormLabel>MOBILE NUMBER</FormLabel>
             <Input placeholder='Mobile Number' value={formData.mobile_number} onChange={(e) => setFormData({ ...formData, mobile_number: e.target.value })} />
           </div>
-          <FormLabel className='mt-12'>Employment Status</FormLabel>
+          <div className='mt-12'>
+            <FormLabel>BATCH MONTH</FormLabel>
+            <Input placeholder='BATCH MONTH' value={formData.batch_month} onChange={(e) => setFormData({ ...formData, batch_month: e.target.value })} />
+          </div>
+          <div className='mt-12'>
+            <FormLabel>BATCH NO.</FormLabel>
+            <Input placeholder='BATCH NUMBER' value={formData.batch_no} onChange={(e) => setFormData({ ...formData, batch_no: e.target.value })} />
+          </div>
+          <div className='mt-12'>
+            <FormLabel>BATCH TIME</FormLabel>
+            <Input placeholder='BATCH TIME' value={formData.batch_time} onChange={(e) => setFormData({ ...formData, batch_time: e.target.value })} />
+          </div>
+          {/* <FormLabel className='mt-12'>Employment Status</FormLabel>
           <Select placeholder='Select Employment Status' value={formData.employment_status} onChange={(e) => setFormData({ ...formData, employment_status: e.target.value })}>
             <option>Employed</option>
             <option>Unemployed</option>
-          </Select>
+          </Select> */}
           <Button
             mt={12}
             colorScheme='teal'
